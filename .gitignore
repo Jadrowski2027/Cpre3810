@@ -1,0 +1,14 @@
+Project/CPRE381/
+work/
+db/
+incremental_db/
+output_files/
+simulation/
+*.wlf
+transcript
+*.bak
+~$*
+.~lock.*
+.DS_Store
+.msys*
+*.exe

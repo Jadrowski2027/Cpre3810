@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "kill running exe",
+            "type": "shell",
+            "command": "taskkill /F /IM \"${fileBasenameNoExtension}.exe\" 2>$null; if (Test-Path \"${fileDirname}\\${fileBasenameNoExtension}.exe\") { Remove-Item -Force \"${fileDirname}\\${fileBasenameNoExtension}.exe\" }; exit 0",
+            "options": {
+                "shell": {
+                    "executable": "powershell.exe",
+                    "args": [
+                        "-NoProfile",
+                        "-Command"
+                    ]
+                }
+            },
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe build active file",
+            "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-Wall",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "kill running exe"
+            ],
+            "dependsOrder": "sequence",
+            "detail": "Build the active C file with MSYS2 mingw64 gcc."
+        }
+    ]
+}
